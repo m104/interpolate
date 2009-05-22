@@ -1,0 +1,14 @@
+History.txt
+LICENSE.txt
+Manifest.txt
+README.txt
+Rakefile
+examples/arrays.rb
+examples/colors.rb
+examples/nested.rb
+examples/zones.rb
+lib/interpolate.rb
+lib/interpolate/interpolation.rb
+lib/interpolate/ruby_array.rb
+lib/interpolate/ruby_numeric.rb
+test/test_all.rb
