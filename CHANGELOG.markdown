@@ -1,25 +1,24 @@
-# 0.2.2 (2008.2.4)
+== 0.2.2 (2008.2.4)
 
 * Single source file has been split into Class files
 * Tests now use +freeze
 * Better edge case testing in the Array and Numeric +interpolate+ methods
 
-# 0.2.1 (2008.1.27)
+== 0.2.1 (2008.1.27)
 
-* First public release
+First public release
 
-* Project Cleanup:
-
+Project Cleanup:
   * Documentation enhancements and updates.
   * +add+ is now +merge+
 
-# 0.2.0 (2008.1.24)
+== 0.2.0 (2008.1.24)
 
 * Changed the library name to "interpolate"
 * Added +interpolate+ (+Array+) that covers uniform arrays and nested arrays
 * Added more tests, documentation, and examples
 
-# 0.1.0 (2008.1.22)
+== 0.1.0 (2008.1.22)
 
 * 2 Major Changes:
 
@@ -27,7 +26,7 @@
 * Checks added for respond_to? +interpolate+ on values
 * Added +interpolate+ (+Numeric+)
 
-# 0.0.1 (2008.1.20)
+== 0.0.1 (2008.1.20)
 
 * Initial coding
 * N-sized arbitrary floating point gradients

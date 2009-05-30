@@ -1,7 +1,7 @@
-History.txt
-LICENSE.txt
+CHANGELOG.markdown
+LICENSE
 Manifest.txt
-README.txt
+README.markdown
 Rakefile
 examples/arrays.rb
 examples/colors.rb

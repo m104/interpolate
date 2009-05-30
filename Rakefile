@@ -1,4 +1,6 @@
+require 'rubygems'
 require 'jeweler'
+require 'rake'
 
 Jeweler::Tasks.new do |g|
   doc_sections = File.read('README.markdown').delete("\r").split(/^## /)
@@ -10,4 +12,22 @@ Jeweler::Tasks.new do |g|
   g.summary = 'Create linear interpolations from key points and values'
   g.description = doc_sections[2].chomp.chomp
 end
+
+require 'rake/testtask'
+Rake::TestTask.new(:test) do |test|
+  test.test_files = FileList.new('test/test_*.rb') do |list|
+    list.exclude 'test/test_helper.rb'
+  end
+  test.libs << 'test'
+  test.verbose = true
+end
+
+require 'rake/rdoctask'
+Rake::RDocTask.new do |rdoc|
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title = 'interpolate'
+  rdoc.rdoc_files.include('README.markdown')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end
+
 
