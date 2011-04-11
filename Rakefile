@@ -1,16 +1,18 @@
-require 'rubygems'
 require 'jeweler'
 require 'rake'
 
+require './lib/interpolate/interpolation'
+
 Jeweler::Tasks.new do |g|
-  doc_sections = File.read('README.markdown').delete("\r").split(/^## /)
+  doc_sections = File.read('README.md').delete("\r").split(/^## /)
 
   g.name = 'interpolate'
+  g.summary = 'Create linear interpolations from key points and values'
+  g.description = doc_sections[2].chomp.chomp # mmmm... tasty!
+  g.email = 'adam@m104.us'
   g.homepage = "http://github.com/m104/interpolate"
   g.authors = ["Adam Collins"]
-  g.email = 'adam@m104.us'
-  g.summary = 'Create linear interpolations from key points and values'
-  g.description = doc_sections[2].chomp.chomp
+  g.version = Interpolation::VERSION
 end
 
 require 'rake/testtask'

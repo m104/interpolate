@@ -3,8 +3,8 @@ require 'interpolate'
 require 'pp'
 
 
-# a non-linear set of 2D vertexes;
-# the shape changes at each frame
+# a number of sets 2D vertices, each set corresponding to a particular
+# shape on the grid
 time_frames = {
   0 => [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0]], # a horizontal line
   1 => [[0, 0], [1, 0], [3, 0], [0, 4], [0, 0]], # a triangle

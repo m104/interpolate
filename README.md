@@ -15,25 +15,26 @@ gradients, piecewise functions, or even just placing values within intervals.
 ## General Usage
 
 Specify the interpolation as a Hash, where keys represent numeric points
-along the gradient and values represent the known values along that gradient.
+along the gradient and values represent the known (key) values along that
+gradient.
 
-Here's an example for determining where, in a range of seven zones, each value
-of a set falls into:
+Here's an example for placing values within one of seven buckets:
 
   require 'rubygems'
   require 'interpolate'
 
-  points = {
-    0.000 => 0,
-    0.427 => 1,
-    1.200 => 2,
-    3.420 => 3,
-    27.50 => 4,
-    45.20 => 5,
-    124.4 => 6,
+  # min_value => bucket
+  buckets = {
+    0.000 => 1,
+    0.427 => 2,
+    1.200 => 3,
+    3.420 => 4,
+    27.50 => 5,
+    45.20 => 6,
+    124.4 => 7,
   }
 
-  zones = Interpolation.new(points)
+  bucketizer = Interpolation.new(buckets)
 
   values = [
     -20.2,
@@ -45,8 +46,8 @@ of a set falls into:
   ]
 
   values.each do |value|
-    zone = zones.at(value).floor
-    puts "A value of #{value} falls into zone #{zone}"
+    bucket = bucketizer.at(value).floor
+    puts "A value of #{value} falls into bucket #{bucket}"
   end
 
 
@@ -70,21 +71,20 @@ the help of the 'color' gem:
 
   # a nice weathermap-style color gradient
   points = {
-    0 => Color::RGB::White,
-    1 => Color::RGB::Lime,
-  # 2 => ? (something between Lime and Yellow)
-    3 => Color::RGB::Yellow,
-    4 => Color::RGB::Orange,
-    5 => Color::RGB::Red,
-    6 => Color::RGB::Magenta,
-    7 => Color::RGB::DarkGray
+    1 => Color::RGB::White,
+    2 => Color::RGB::Lime,
+  # 3 => ? (between Lime and Yellow; Interpolate will figure it out)
+    4 => Color::RGB::Yellow,
+    5 => Color::RGB::Orange,
+    6 => Color::RGB::Red,
+    7 => Color::RGB::Magenta
   }
 
   gradient = Interpolation.new(points)
 
-  # what are the colors of the gradient from 0 to 7
+  # what are the colors of the gradient from 1 to 7
   # in increments of 0.2?
-  (0).step(7, 0.2) do |value|
+  (1).step(7, 0.2) do |value|
     color = gradient.at(value)
     puts "A value of #{value} means #{color.html}"
   end
@@ -105,21 +105,21 @@ Here is an example:
   require 'pp'
 
   # a non-linear set of multi-dimensional points;
-  # perhaps the location of some actor in relation to time
+  # perhaps the location of an actor in relation to time
   time_frames = {
-    0 => [0, 0, 0],
-    1 => [1, 0, 0],
-    2 => [0, 1, 0],
-    3 => [0, 0, 2],
-    4 => [3, 0, 1],
-    5 => [1, 2, 3],
-    6 => [0, 0, 0]
+    1 => [0, 0, 0],
+    2 => [1, 0, 0],
+    3 => [0, 1, 0],
+    4 => [0, 0, 2],
+    5 => [3, 0, 1],
+    6 => [1, 2, 3],
+    7 => [0, 0, 0]
   }
 
   path = Interpolation.new(time_frames)
 
-  # play the actors positions in time increments of 0.25
-  (0).step(6, 0.25) do |time|
+  # play the actor's positions in time increments of 0.25
+  (1).step(7, 0.25) do |time|
     position = path.at(time)
     puts ">> At #{time}s, actor is at:"
     p position
@@ -139,8 +139,8 @@ Here's an example of a set of 2D points being morphed:
   require 'pp'
 
 
-  # a non-linear set of 2D vertexes;
-  # the shape changes at each frame
+  # a number of sets 2D vertices, each set corresponding to a particular
+  # shape on the grid
   time_frames = {
     0 => [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0]], # a horizontal line
     1 => [[0, 0], [1, 0], [3, 0], [0, 4], [0, 0]], # a triangle
@@ -164,7 +164,7 @@ Here's an example of a set of 2D points being morphed:
 
 (The MIT License)
 
-Copyright (c) 2008 Adam Collins [adam.w.collins@gmail.com]
+Copyright (c) 2008-2011 Adam Collins [adam@m104.us]
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

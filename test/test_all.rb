@@ -1,11 +1,11 @@
-#!/usr/bin/env ruby1.8 -w
+#!/usr/bin/env ruby
 
 require 'test/unit'
-require 'lib/interpolate'
+require 'interpolate'
 
 
 class InterpolationTest < Test::Unit::TestCase
-
+  # acceptable delta; floating point values won't be exact
   DELTA = 1e-7
 
   def setup
@@ -133,7 +133,7 @@ class InterpolationTest < Test::Unit::TestCase
     assert_equal(@array_gradient.at(200), [5, 50, 500])
     assert_equal(@array_gradient.at(350), [7.5, 75, 750])
   end
-  
+
   def test_frozen_points
     a = @array_gradient.at(200)
     assert_nothing_raised RuntimeError do

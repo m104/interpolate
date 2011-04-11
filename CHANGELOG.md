@@ -1,7 +1,11 @@
+== 0.2.4 (2011.4.10)
+
+* Project cleanup: minor updates to the lib/ file structure and documentation
+
 == 0.2.2 (2008.2.4)
 
 * Single source file has been split into Class files
-* Tests now use +freeze
+* Tests now use +freeze+
 * Better edge case testing in the Array and Numeric +interpolate+ methods
 
 == 0.2.1 (2008.1.27)

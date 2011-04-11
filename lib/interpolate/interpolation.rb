@@ -22,7 +22,7 @@
 #
 # ==Author
 #
-# {Adam Collins}[mailto:adam.w.collins@gmail.com]
+# {Adam Collins}[mailto:adam@m104.us]
 #
 #
 # ==License
@@ -31,7 +31,7 @@
 #
 
 class Interpolation
-  VERSION = '0.2.2'
+  VERSION = '0.2.4'
 
   # creates an Interpolation object with Hash object that specifies
   # each point location (Numeric) and value (up to you)
@@ -42,7 +42,7 @@ class Interpolation
 
   # creates an Interpolation object from the receiver object,
   # merged with the interpolated points you specify
-  def merge(points = {}) 
+  def merge(points = {})
     Interpolation.new(points.merge(@points))
   end
 
@@ -52,7 +52,7 @@ class Interpolation
     normalize_data
   end
 
-  # returns the interpolated value of the receiver object at the point specified 
+  # returns the interpolated value of the receiver object at the point specified
   def at(point)
     # deal with the two out-of-bounds cases first
     if (point <= @min_point)
@@ -63,12 +63,12 @@ class Interpolation
 
     # go through the interpolation intervals, in order, to determine
     # into which this point falls
-    1.upto(@data.length - 1) do |zone|
-      left = @data.at(zone - 1)
-      right = @data.at(zone)
-      zone_range = left.first..right.first
+    1.upto(@data.length - 1) do |interval|
+      left = @data.at(interval - 1)
+      right = @data.at(interval)
+      interval_range = left.first..right.first
 
-      if (zone_range.include?(point))
+      if (interval_range.include?(point))
         # what are the points in question?
         left_point = left.first.to_f
         right_point = right.first.to_f
@@ -83,7 +83,7 @@ class Interpolation
         balance = (point.to_f - left_point) / span
 
         # catch the cases where the point in quesion is
-        # on one of the zone's endpoints
+        # on one of the interval's endpoints
         return left_value if (balance == 0.0)
         return right_value if (balance == 1.0)
 
@@ -113,4 +113,5 @@ class Interpolation
   end
 
 end
+
 
