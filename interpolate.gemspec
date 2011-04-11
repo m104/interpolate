@@ -9,12 +9,11 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Adam Collins"]
-  s.date = %q{2011-04-10}
-  s.description = %q{Description
-
-Library for generic Interpolation objects. Useful for such things as generating
-linear motion between points (or arrays of points), multi-channel color
-gradients, piecewise functions, or even just placing values within intervals.
+  s.date = %q{2011-04-11}
+  s.description = %q{Library for generic Interpolation objects.  Useful for such things as
+generating linear motion between points (or arrays of points), multi-channel
+color gradients, piecewise functions, or even just placing values within
+intervals.
 }
   s.email = %q{adam@m104.us}
   s.extra_rdoc_files = [

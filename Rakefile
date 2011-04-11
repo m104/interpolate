@@ -4,11 +4,14 @@ require 'rake'
 require './lib/interpolate/interpolation'
 
 Jeweler::Tasks.new do |g|
-  doc_sections = File.read('README.md').delete("\r").split(/^## /)
-
   g.name = 'interpolate'
   g.summary = 'Create linear interpolations from key points and values'
-  g.description = doc_sections[2].chomp.chomp # mmmm... tasty!
+  g.description = <<-DESC
+Library for generic Interpolation objects.  Useful for such things as
+generating linear motion between points (or arrays of points), multi-channel
+color gradients, piecewise functions, or even just placing values within
+intervals.
+  DESC
   g.email = 'adam@m104.us'
   g.homepage = "http://github.com/m104/interpolate"
   g.authors = ["Adam Collins"]
@@ -28,7 +31,7 @@ require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = 'interpolate'
-  rdoc.rdoc_files.include('README.markdown')
+  rdoc.rdoc_files.include('README.md')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
