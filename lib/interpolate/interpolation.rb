@@ -1,23 +1,25 @@
-# Library for generic interpolation objects. Useful for such things as generating
-# linear motion between points (or arrays of points), multi-channel color
-# gradients, piecewise functions, or even just placing values within intervals.
+# Library for generic linear interpolation objects. Useful for such things as
+# generating linear motion between points (or arrays of points), multi-channel
+# color gradients, piecewise functions, or even just placing values within
+# intervals.
 #
 # The only requirement is that each interpolation point value must be able to
-# figure out how to interpolate itself to its neighbor value(s). Numeric
-# objects and uniformly sized arrays are automatically endowed with this
-# ability by this gem, but other classes will require an implementation
-# of +interpolate+. See the example color.rb in the examples directory for
-# a brief demonstration using Color objects provided by the 'color' gem.
+# calculate an interpolation, given a "balance" ratio, with its neighbor
+# value(s). Numeric objects and uniformly sized arrays are automatically endowed
+# with this ability by this gem, but other classes will require an
+# implementation of +interpolate+. See the example color.rb in the examples
+# directory for a brief demonstration using Color::RGB objects provided by the
+# 'color' gem.
 #
-# Interpolation objects are constructed with a Hash object, wherein each key
-# is a real number value and each value is can respond to +interpolate+ and
-# determine the resulting value based on its neighbor value and the balance
-# ratio between the two points.
+# Interpolation objects are constructed with a Hash object, wherein each key is
+# a Numeric and each value is an object which responds to +interpolate+.  Value
+# objects are responsible for determining the resulting value based on its
+# neighbor value and the balance ratio between the two points.
 #
 # At or below the lower bounds of the interpolation, the result will be equal to
 # the value of the lower bounds interpolation point.  At or above the upper
-# bounds of the graient, the result will be equal to the value of the upper
-# bounds interpolation point.
+# bounds of the interpolation, the result will be equal to the value of the
+# upper bounds interpolation point.
 #
 #
 # ==Author
@@ -46,7 +48,7 @@ class Interpolation
     Interpolation.new(points.merge(@points))
   end
 
-  # merges the interpolation points with the receiver object
+  # merges the Interpolation points with the receiver object
   def merge!(points = {})
     @points.merge!(points)
     normalize_data

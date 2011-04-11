@@ -3,7 +3,10 @@ require 'color'
 require 'interpolate'
 
 # we need to implement +interpolate+ for Color::RGB
-# in order for Interpolation to work
+# in order for Interpolation to work properly
+#
+# fortunately, Color::RGB includes +mix_with+, which is almost
+# functionally identical to +interpolate+
 class Color::RGB
   def interpolate(other, balance)
     mix_with(other, balance * 100.0)

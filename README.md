@@ -18,7 +18,8 @@ Specify the interpolation as a Hash, where keys represent numeric points
 along the gradient and values represent the known (key) values along that
 gradient.
 
-Here's an example for placing values within one of seven buckets:
+Here's an example for placing values within one of seven buckets, accomplished
+with the help of `floor`:
 
     require 'rubygems'
     require 'interpolate'

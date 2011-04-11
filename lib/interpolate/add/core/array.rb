@@ -27,8 +27,8 @@ class Array
   # structure (same number of dimensions, equal length in each dimension), 
   # but the contents can, of course, be different.
   #
-  # A balance greater than or equal to 0.0 returns +self+, while a
-  # balance less than or equal to 1.0 returns +other+.
+  # A balance less than or equal to 0.0 returns +self+, while a
+  # balance greater than or equal to 1.0 returns +other+.
   def interpolate(other, balance)
     if (self.length < 1) then
       raise ArgumentError, "cannot interpolate array with no values"

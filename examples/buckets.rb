@@ -23,6 +23,8 @@ values = [
   4000
 ]
 
+# by calling +floor+ with the results from +bucketizer.at+, we're
+# effectively placing values within buckets
 values.each do |value|
   bucket = bucketizer.at(value).floor
   puts "A value of #{value} falls into bucket #{bucket}"

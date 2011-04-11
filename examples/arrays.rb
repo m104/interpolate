@@ -17,7 +17,7 @@ time_frames = {
 
 path = Interpolation.new(time_frames)
 
-# play the actors positions in time increments of 0.25
+# play the actor's positions in time increments of 0.25
 (0).step(6, 0.25) do |time|
   position = path.at(time)
   puts ">> At #{time}s, actor is at:"
