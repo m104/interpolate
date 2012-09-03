@@ -24,17 +24,17 @@ class Array
   #
   # This method is intentionally abstract to allow for the interpolation
   # of nested arrays.  In this case, both arrays need to have the same array
-  # structure (same number of dimensions, equal length in each dimension), 
+  # structure (same number of dimensions, equal length in each dimension),
   # but the contents can, of course, be different.
   #
   # A balance less than or equal to 0.0 returns +self+, while a
   # balance greater than or equal to 1.0 returns +other+.
   def interpolate(other, balance)
     if (self.length < 1) then
-      raise ArgumentError, "cannot interpolate array with no values"
+      raise ArgumentError, "cannot interpolate empty array"
     end
 
-    if (self.length != other.length) then
+    if self.length != other.length then
       raise ArgumentError, "cannot interpolate between arrays of different length"
     end
 
@@ -44,16 +44,14 @@ class Array
 
     final = Array.new
 
-    self.each_with_index do |left, index|
-      unless (left.respond_to? :interpolate) then
+    self.each_with_index do |value, index|
+      unless value.respond_to? :interpolate then
         raise "array element does not respond to :interpolate"
       end
 
-      right = other[index]
-
-      final[index] = left.interpolate(right, balance)
+      final[index] = value.interpolate(other[index], balance)
     end
 
-    return final
+    final
   end
 end

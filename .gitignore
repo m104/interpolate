@@ -1,4 +1,7 @@
 .DS_Store
 *.swp
-rdoc/*
-pkg/*
+Gemfile.lock
+.bundle/
+rdoc/
+pkg/
+*.gem

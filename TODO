@@ -1,0 +1,14 @@
+Interpolate::Points
+  - out of bounds behavior options
+  - more than one stock blending function
+  - allow symbol in place of blend_with Proc
+
+Add/Core
+  - Complex type :interpolate method
+
+Testing
+  - more coverage of blending function behavior
+  - split test_all.rb into case category files
+  - minitest
+  - contexts (?)
+

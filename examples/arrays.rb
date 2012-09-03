@@ -15,7 +15,7 @@ time_frames = {
   6 => [0, 0, 0]
 }
 
-path = Interpolation.new(time_frames)
+path = Interpolate::Points.new(time_frames)
 
 # play the actor's positions in time increments of 0.25
 (0).step(6, 0.25) do |time|

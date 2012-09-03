@@ -1,3 +1,12 @@
+## 0.3.0 (2012.9.01)
+
+Major gem revisions:
+
+* Interpolation class moved to Interpolate::Points
+* Binary search to find the correct interpolation interval
+* Optional blending function block can be passed to Interpolate::Points
+* gemspec file completely rebuilt, sans Jeweler
+
 ## 0.2.4 (2011.4.10)
 
 * Project cleanup: minor updates to the lib/ file structure and documentation
@@ -27,7 +36,7 @@ Project Cleanup:
 
 2 Major Changes:
 
-* Gadient calls `interpolate` on values for OOP goodness
+* Gradient calls `interpolate` on values for OOP goodness
 * Checks added for `respond_to?(:interpolate)` on values
 * Added `Numeric#interpolate`
 

@@ -4,15 +4,13 @@ require 'interpolate'
 # min_value => bucket
 buckets = {
   0.000 => 1,
-  0.427 => 2,
-  1.200 => 3,
-  3.420 => 4,
-  27.50 => 5,
-  45.20 => 6,
-  124.4 => 7,
+  0.500 => 2,
+  1.250 => 3,
+  7.725 => 4,
+  28.85 => 5,
+  50.00 => 6,
+  127.5 => 7
 }
-
-bucketizer = Interpolation.new(buckets)
 
 values = [
   -20.2,
@@ -23,8 +21,11 @@ values = [
   4000
 ]
 
-# by calling +floor+ with the results from +bucketizer.at+, we're
-# effectively placing values within buckets
+# using Interpolate::Points to place values within discrete intervals
+bucketizer = Interpolate::Points.new(buckets)
+# the blending function will mimic the mathematical floor function
+bucketizer.blend_with {|low, high, balance| low }
+
 values.each do |value|
   bucket = bucketizer.at(value).floor
   puts "A value of #{value} falls into bucket #{bucket}"

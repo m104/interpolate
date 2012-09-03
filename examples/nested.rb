@@ -14,7 +14,7 @@ time_frames = {
 }
 
 
-paths = Interpolation.new(time_frames)
+paths = Interpolate::Points.new(time_frames)
 
 # show the vertex positions in time increments of 0.25
 (0).step(4, 0.25) do |time|

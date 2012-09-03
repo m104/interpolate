@@ -19,14 +19,15 @@ class Numeric
   # A balance less than or equal to 0.0 returns +self+, while a
   # balance greater than or equal to 1.0 returns +other+.
   def interpolate(other, balance)
+    # everything should be a Float
     balance = balance.to_f
     left = self.to_f
     right = other.to_f
-    
+
     # catch the easy cases
     return left if (balance <= 0.0)
     return right if (balance >= 1.0)
-    
+
     delta = (right - left).to_f
     return left + (delta * balance)
   end
